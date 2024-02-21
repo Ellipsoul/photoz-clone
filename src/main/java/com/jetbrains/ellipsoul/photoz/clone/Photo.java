@@ -11,6 +11,9 @@ public class Photo {
   @NotEmpty
   private String fileName;
 
+  @NotEmpty
+  private String contentType;
+
   // Really simple byte array for the photo itself
   @JsonIgnore // Prevents sending super long byte array for JSON requests
   private byte[] data;
@@ -39,5 +42,14 @@ public class Photo {
 
   public void setData(byte[] data) {
     this.data = data;
+  }
+
+
+  public String getContentType() {
+    return this.contentType;
+  }
+
+  public void setContentType(String contentType) {
+    this.contentType = contentType;
   }
 }
