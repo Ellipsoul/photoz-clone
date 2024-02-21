@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -24,14 +25,24 @@ public class PhotozController {
     return "Hello World!";
   }
 
+  // List all photoz
   @GetMapping("/photoz") // Retrieves all photos
   public Collection<Photo> getPhotoz() {
     return db.values();
   }
 
+  // Get a specific photo
   @GetMapping("/photoz/{id}") // Matches the function's parameter
-  public Photo getMethodName(@PathVariable String id) {
+  public Photo getPhoto(@PathVariable String id) {
     Photo photo = db.get(id);
+    if (photo == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+    return photo;
+  }
+
+  // Delete a specific photo
+  @DeleteMapping("/photoz/{id}") // Matches the function's parameter
+  public Photo deletePhoto(@PathVariable String id) {
+    Photo photo = db.remove(id);
     if (photo == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     return photo;
   }
