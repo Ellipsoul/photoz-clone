@@ -8,7 +8,6 @@ import com.jetbrains.ellipsoul.photoz.clone.model.Photo;
 import com.jetbrains.ellipsoul.photoz.clone.service.PhotozService;
 
 import java.io.IOException;
-import java.util.Collection;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,13 +34,13 @@ public class PhotozController {
 
   // List all photoz
   @GetMapping("/photoz") // Retrieves all photos
-  public Collection<Photo> getPhotoz() {
+  public Iterable<Photo> getPhotoz() {
     return photozService.get();
   }
 
   // Get a specific photo
   @GetMapping("/photoz/{id}") // Matches the function's parameter
-  public Photo getPhoto(@PathVariable String id) {
+  public Photo getPhoto(@PathVariable Integer id) {
     Photo photo = photozService.get(id);
     if (photo == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
     return photo;
@@ -49,10 +48,8 @@ public class PhotozController {
 
   // Delete a specific photo
   @DeleteMapping("/photoz/{id}") // Matches the function's parameter
-  public Photo deletePhoto(@PathVariable String id) {
-    Photo photo = photozService.remove(id);
-    if (photo == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-    return photo;
+  public void deletePhoto(@PathVariable Integer id) {
+    photozService.remove(id);
   }
 
   // Add a photo

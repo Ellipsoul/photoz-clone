@@ -23,8 +23,9 @@ public class DownloadController {
     this.photozService = photozService;
   }
 
+  @SuppressWarnings("null")
   @GetMapping("/download/{id}")
-  public ResponseEntity<byte[]> downloadPhoto(@PathVariable String id) {
+  public ResponseEntity<byte[]> downloadPhoto(@PathVariable Integer id) {
     // Retrieve the photo from the database
     Photo photo = photozService.get(id);
     if (photo == null) throw new ResponseStatusException(HttpStatus.NOT_FOUND);
