@@ -1,5 +1,7 @@
 package com.jetbrains.ellipsoul.photoz.clone;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.validation.constraints.NotEmpty;
 
 public class Photo {
@@ -9,13 +11,11 @@ public class Photo {
   @NotEmpty
   private String fileName;
 
-  // Raw data
+  // Really simple byte array for the photo itself
+  @JsonIgnore // Prevents sending super long byte array for JSON requests
+  private byte[] data;
 
-  public Photo(String id, String fileName) {
-    this.id = id;
-    this.fileName = fileName;
-  }
-
+  public Photo() {}
 
   public String getId() {
     return this.id;
@@ -33,4 +33,11 @@ public class Photo {
     this.fileName = fileName;
   }
 
+  public byte[] getData() {
+    return this.data;
+  }
+
+  public void setData(byte[] data) {
+    this.data = data;
+  }
 }
