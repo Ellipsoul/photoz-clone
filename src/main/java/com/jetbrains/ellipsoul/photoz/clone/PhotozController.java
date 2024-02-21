@@ -3,6 +3,8 @@ package com.jetbrains.ellipsoul.photoz.clone;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import jakarta.validation.Valid;
+
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
@@ -54,7 +56,7 @@ public class PhotozController {
 
   // Add a photo
   @PostMapping("/photoz")
-  public Photo addPhoto(@RequestBody Photo photo) { // Convert JSON into the Photo class
+  public Photo addPhoto(@RequestBody @Valid Photo photo) { // Convert JSON into the Photo class, validates
     photo.setId(UUID.randomUUID().toString()); // Generate a random UUID
     db.put(photo.getId(), photo); // Add the photo to the database
     return photo;

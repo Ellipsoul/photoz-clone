@@ -1,7 +1,12 @@
 package com.jetbrains.ellipsoul.photoz.clone;
 
+import jakarta.validation.constraints.NotEmpty;
+
 public class Photo {
   private String id;
+
+  // Ensure that this is not empty
+  @NotEmpty
   private String fileName;
 
   // Raw data
