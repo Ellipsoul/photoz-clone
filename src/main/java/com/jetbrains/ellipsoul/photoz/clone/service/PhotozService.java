@@ -1,4 +1,4 @@
-package com.jetbrains.ellipsoul.photoz.clone;
+package com.jetbrains.ellipsoul.photoz.clone.service;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -6,6 +6,8 @@ import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
+
+import com.jetbrains.ellipsoul.photoz.clone.model.Photo;
 
 @Service // Instantiate this class when the application starts up
 public class PhotozService {

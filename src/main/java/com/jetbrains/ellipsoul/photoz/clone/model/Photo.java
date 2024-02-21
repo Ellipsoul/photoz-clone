@@ -1,4 +1,4 @@
-package com.jetbrains.ellipsoul.photoz.clone;
+package com.jetbrains.ellipsoul.photoz.clone.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

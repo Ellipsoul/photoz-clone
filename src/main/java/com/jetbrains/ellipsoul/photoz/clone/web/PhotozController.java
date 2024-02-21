@@ -1,8 +1,11 @@
-package com.jetbrains.ellipsoul.photoz.clone;
+package com.jetbrains.ellipsoul.photoz.clone.web;
 
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.server.ResponseStatusException;
+
+import com.jetbrains.ellipsoul.photoz.clone.model.Photo;
+import com.jetbrains.ellipsoul.photoz.clone.service.PhotozService;
 
 import java.io.IOException;
 import java.util.Collection;
